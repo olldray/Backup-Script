@@ -1,0 +1,30 @@
+Backup script: A rotating backup script for linux systems written in perl.
+
+Contents:
+1. Description of project
+2. Intended use/configuration
+
+
+-----------------
+1. Description of project
+-----------------
+A rotating backup script for linux systems.
+
+Essentially, it will make a specified number of daily backups. When the oldest backup falls on a 
+specified day of the week, it will be moved to the weekly directory instead of being deleted. Likewise,
+the oldest weekly backup will be moved to the monthly folder under specified circumstances. 
+
+All backups are made by rsync with the --link-dest option, so that each backup directory contains
+a full backup, but they only take up the disk space of a single copy (plus changes).
+
+
+
+
+--------------------
+2. Intended use/configuration
+--------------------
+
+This script is meant to be run as a daily cron job with output directed to a log file. eg:
+     30 2 * * * [path to]/rscript.pl &> [log file]
+
+
